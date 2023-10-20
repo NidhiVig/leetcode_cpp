@@ -12,21 +12,6 @@ class Solution {
             if(r>=0 && c>=0 && r<n && c<m && image[r][c] == initial && ans[r][c] != newColor)
                 dfs(r, c, initial, image, ans, newColor,n,m,delr,delc);
         }
-        // for(int i = -1;i<=1;i++){
-        //     int r = row+i, c = col;
-        //     if(r>=0 && r<n && c>=0 && c<m && ans[r][c] == initial){
-        // //         cout<<r<<" "<<c<<endl;
-        //         // dfs(r, c, initial, image, ans, newColor,n,m);
-        //     }
-        // }
-        // for(int i = -1;i<=1;i++){
-        //     int c = col+i, r = row;
-        //     if(c>=0 && c<m && r>=0 && r<n && ans[r][c] == initial){
-        // //         cout<<r<<" "<<c<<endl;
-        //         dfs(r, c, initial, image, ans, newColor,n,m);
-                
-        //     }
-        // }
     }
 public:
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
