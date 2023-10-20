@@ -6,16 +6,14 @@ using namespace std;
 class Solution {
     void bfs(int row, int col, vector<vector<char>>& grid, vector<vector<bool>>& vis,int n,int m){
         queue<pair<int,int>> q;
-        vector<int> r = {-1,0,1};
-        vector<int> c = {-1,0,1};
         q.push({row,col});
         vis[row][col] = 1;
         while(!q.empty()){
             pair<int,int> p = q.front();
             q.pop();
-            for(int i = 0;i<3;i++){
-                for(int j = 0;j<3;j++){
-                    int a = p.first+r[i], b = p.second+c[j];
+            for(int i = -1;i<=1;i++){
+                for(int j = -1;j<=1;j++){
+                    int a = p.first+i, b = p.second+j;
                     if(a>=0 && b>=0 && a<n && b<m && !vis[a][b] && grid[a][b] == '1'){
                         vis[a][b] = 1;
                         q.push({a,b});
