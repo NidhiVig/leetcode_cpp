@@ -4,13 +4,27 @@ using namespace std;
 
 // } Driver Code Ends
 class Solution {
-    void dfs(int row, int col, int initial, vector<vector<int>>& image, vector<vector<int>>& ans, int newColor,int n, int m,
-    vector<int>& delr, vector<int>& delc){
+    void dfs(int row, int col, int initial, vector<vector<int>>& image, vector<vector<int>>& ans, int newColor,int n, int m){
         ans[row][col] = newColor;
-        for(int i = 0;i<4;i++){
-            int r = row+delr[i], c = col+delc[i];
-            if(r>=0 && c>=0 && r<n && c<m && image[r][c] == initial && ans[r][c] != newColor)
-                dfs(r, c, initial, image, ans, newColor,n,m,delr,delc);
+        // for(int i = 0;i<4;i++){
+        //     int r = row+delr[i], c = col+delc[i];
+        //     if(r>=0 && c>=0 && r<n && c<m && image[r][c] == initial && ans[r][c] != newColor)
+        //         dfs(r, c, initial, image, ans, newColor,n,m,delr,delc);
+        // }
+        for(int i = -1;i<=1;i++){
+            int r = row+i, c = col;
+            if(r>=0 && r<n && c>=0 && c<m && image[r][c] == initial && ans[r][c] != newColor){
+        //         cout<<r<<" "<<c<<endl;
+                dfs(r, c, initial, image, ans, newColor,n,m);
+            }
+        }
+        for(int i = -1;i<=1;i++){
+            int c = col+i, r = row;
+            if(c>=0 && c<m && r>=0 && r<n && image[r][c] == initial && ans[r][c] != newColor){
+        //         cout<<r<<" "<<c<<endl;
+                dfs(r, c, initial, image, ans, newColor,n,m);
+                
+            }
         }
     }
 public:
@@ -19,9 +33,9 @@ public:
         int initial = image[sr][sc];
         vector<vector<int>> ans = image;
         int n = image.size(), m = image.back().size();
-        vector<int> delr = {-1,0,1,0};
-        vector<int> delc = {0,-1,0,1};
-        dfs(sr,sc, initial, image, ans, newColor,n,m, delr, delc);
+        // vector<int> delr = {-1,0,1,0};
+        // vector<int> delc = {0,-1,0,1};
+        dfs(sr,sc, initial, image, ans, newColor,n,m);
         return ans;
     }
 };
