@@ -38,10 +38,7 @@ class Solution
             if(!flag) break;
             time++;
         }
-        // for(int i = 0;i<n;i++)
-        //     for(int j = 0;j<m;j++)
-        //         if(grid[i][j] == 1) time = -1;
-        return cnt==0?time:-1;
+        return cnt == 0? time : -1;
         // TC: O(n*m)
     }
 };
