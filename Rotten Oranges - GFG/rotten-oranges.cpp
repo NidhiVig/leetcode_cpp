@@ -14,7 +14,7 @@ class Solution
         vector<int> delr = {-1,0,1,0};
         vector<int> delc = {0,-1,0,1};
         queue<pair<int,int>> q;
-        vector<vector<bool>> vis(n,vector<bool>(m,0));
+        // vector<vector<bool>> vis(n,vector<bool>(m,0));
         for(int i = 0;i<n;i++)
             for(int j = 0;j<m;j++)
                 if(grid[i][j] == 2) q.push({i,j});
@@ -27,11 +27,10 @@ class Solution
                 // bfs(p.first, p.second, grid, vis, n,m);
                 for(int ii = 0;ii<4;ii++){
                     int r = p.first+delr[ii], c = p.second+delc[ii];
-                    if(r>=0 && r<n && c>=0 && c<m && !vis[r][c] && grid[r][c] == 1){
+                    if(r>=0 && r<n && c>=0 && c<m && grid[r][c] == 1){
                         q.push({r,c});
                         grid[r][c] = 2;
                         flag = 1;
-                        vis[r][c] = 1;
                     }
                 }
             }
